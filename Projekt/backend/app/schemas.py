@@ -156,3 +156,21 @@ class RezerwacjaUzytkownikaOut(BaseModel):
 
     class Config:
         from_attributes = True
+
+class PlatnoscStartIn(BaseModel):
+    id_rezerwacji: int
+
+
+class PlatnoscStartOut(BaseModel):
+    payment_id: str
+    id_rezerwacji: int
+    kwota: float
+
+
+class PlatnoscConfirmIn(BaseModel):
+    id_rezerwacji: int
+
+
+class PlatnoscConfirmOut(BaseModel):
+    detail: str
+    id_rezerwacji: int

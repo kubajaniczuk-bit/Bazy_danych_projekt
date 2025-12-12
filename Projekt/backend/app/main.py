@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 from .db import Base, engine
 from . import models
-from .api import repertuar, seanse, filmy, rezerwacje, sale, uzytkownicy,  raporty, cennik
+from .api import repertuar, seanse, filmy, rezerwacje, sale, uzytkownicy,  raporty, cennik, platnosci
 
 
 
@@ -19,6 +19,7 @@ app.include_router(sale.router)
 app.include_router(uzytkownicy.router)
 app.include_router(raporty.router)   
 app.include_router(cennik.router)    
+app.include_router(platnosci.router)
 
 
 @app.get("/")

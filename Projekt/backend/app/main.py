@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-
+from fastapi.middleware.cors import CORSMiddleware
 from .db import Base, engine
 from . import models
 from .api import repertuar, seanse, filmy, rezerwacje, sale, uzytkownicy,  raporty, cennik, platnosci
@@ -9,6 +9,14 @@ from .api import repertuar, seanse, filmy, rezerwacje, sale, uzytkownicy,  rapor
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="System rezerwacji kina")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5500"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 # Routery API
 app.include_router(repertuar.router)

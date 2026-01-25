@@ -14,7 +14,9 @@ fetch("http://localhost:8000/repertuar/")
           Czas trwania: ${film.czas_trwania} min<br>
           Data: ${s.data} godz. ${s.godzina}<br>
           Sala: ${s.numer_sali}<br>
-          <button onclick="przejdzDoRezerwacji(${s.id_seansu})">Rezerwuj</button>
+          <button onclick="window.location.href='rezerwacja.html?id_seansu=1'">
+  Rezerwuję
+</button>
         </div>
       `;
     });

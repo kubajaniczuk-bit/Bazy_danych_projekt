@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Kino</title>
+</head>
+<h1>Lista filmów</h1>
+
+<div id="admin-panel" style="display: none;">
+    <h2>Dodaj nowy film (ADMIN)</h2>
+
+    <input type="text" id="tytul" placeholder="Tytuł filmu" required>
+    <input type="text" id="typ" placeholder="Gatunek" required>
+    <input type="number" id="czas" placeholder="Czas trwania (min)" required>
+
+    <button onclick="dodajFilm()">Dodaj film</button>
+    <p id="admin-msg"></p>
+</div>
+
+<hr>
+
+<ul id="lista-filmow"></ul>
+
+<script src="js/api.js"></script>
+<script src="js/filmy.js"></script>
+<a href="cennik.html">
+    <button>Przejdź do cennika</button>
+</a>

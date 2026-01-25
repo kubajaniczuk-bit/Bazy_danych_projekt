@@ -44,5 +44,5 @@ async function register() {
     }
 
     alert("Konto utworzone, możesz się zalogować");
-    window.location.href = "login.html";
+    window.location.href = "logowanie.html";
 }

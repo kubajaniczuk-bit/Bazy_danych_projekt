@@ -1,6 +1,6 @@
 const API_URL = "http://localhost:8000/cennik/";
 
-// 🔐 sprawdzamy logowanie
+
 const user = getUser();
 if (!user) {
     window.location.href = "logowanie.html";
@@ -22,4 +22,5 @@ fetch(`${API_BASE}/cennik/`)
         document.getElementById("normalny").textContent = data.normalny;
         document.getElementById("ulgowy").textContent = data.ulgowy;
     });
+
 

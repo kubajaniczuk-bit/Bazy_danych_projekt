@@ -1,28 +1,40 @@
 fetch("http://localhost:8000/repertuar/")
   .then(res => res.json())
   .then(seanse => {
+    console.log("Odpowiedź z API:", seanse);
+
     const div = document.getElementById("listaRepertuaru");
     div.innerHTML = "";
 
     seanse.forEach(s => {
       const film = s.film;
+      const seansId = s.id_seansu || s.id || s.idSeansu; // spróbuj wszystkich
 
-      div.innerHTML += `
-        <div style="border:1px solid black; margin:10px; padding:10px;">
-          <b>${film.tytul}</b><br>
-          Typ: ${film.typ}<br>
-          Czas trwania: ${film.czas_trwania} min<br>
-          Data: ${s.data} godz. ${s.godzina}<br>
-          Sala: ${s.numer_sali}<br>
-          <button onclick="window.location.href='rezerwacja.html?id_seansu=1'">
-  Rezerwuję
-</button>
-        </div>
+      const seansDiv = document.createElement("div");
+      seansDiv.style.border = "1px solid black";
+      seansDiv.style.margin = "10px";
+      seansDiv.style.padding = "10px";
+
+      seansDiv.innerHTML = `
+        <b>${film.tytul}</b><br>
+        Data: ${s.data} godz. ${s.godzina}<br>
+        Sala: ${s.numer_sali}<br>
       `;
-    });
-  });
 
-function przejdzDoRezerwacji(idSeansu) {
-  localStorage.setItem("seans_id", idSeansu);
-  window.location.href = "rezerwacja.html";
-}
+      const btn = document.createElement("button");
+      btn.textContent = "Rezerwuję";
+
+      btn.onclick = () => {
+        if (!seansId) {
+          alert("Brak ID seansu!");
+          return;
+        }
+        localStorage.setItem("id_seansu", seansId);
+        window.location.href = "rezerwacja.html";
+      };
+
+      seansDiv.appendChild(btn);
+      div.appendChild(seansDiv);
+    });
+  })
+  .catch(err => console.error("Błąd pobierania repertuaru:", err));

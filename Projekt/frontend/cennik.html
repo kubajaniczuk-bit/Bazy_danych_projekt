@@ -3,28 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Kino</title>
+    <link rel="stylesheet" href="css/proba.css">
 </head>
 <body>
-<h1>Cennik</h1>
+<h1>Kino</h1>
+<a href="filmy.html" class="btn">Filmy</a>
 
-<p>Normalny: <span id="normalny">-</span> zł</p>
-<p>Ulgowy: <span id="ulgowy">-</span> zł</p>
+<a href="repertuar.html" class="btn">repertuar</a>
 
-<button onclick="logout()">Wyloguj</button>
-
-
-
+<div id="admin" style="display: none;">
+    <a href="sala.html" class="btn">Tworzenie sal</a>
+    <a href="admin_seans.html" class="btn">Dodawanie seansów</a>
+</div>
+<div>
+    <button onclick="logout()">Wyloguj</button>
+</div>
 <script src="js/api.js"></script>
 <script src="js/cennik.js"></script>
-<a href="filmy.html">
-    <button>Przejdź do filmów</button>
-</a>
-<a href="sala.html">
-    <button>Przejdź do tworzenia sal</button>
-</a>
-<a href="admin_seans.html">
-    <button>Przejdź do dodawania seansow</button>
-</a>
-<a href="repertuar.html">
-    <button>Przejdź do repertuaru</button>
-</a>
+

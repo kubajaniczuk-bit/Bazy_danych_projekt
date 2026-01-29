@@ -5,6 +5,10 @@ const user = getUser();
 if (!user) {
     window.location.href = "logowanie.html";
 }
+if (user.typ === 2) {
+  document.getElementById("admin").style.display = "block";
+}
+
 const info = document.createElement("p");
 if (user.typ === 2) {
     info.textContent = "Jesteś zalogowany jako ADMIN";
@@ -14,13 +18,6 @@ if (user.typ === 2) {
     info.textContent = "Zalogowany użytkownik";
 }
 
-document.body.prepend(info); 
-// pobieramy cennik (publiczny endpoint)
-fetch(`${API_BASE}/cennik/`)
-    .then(res => res.json())
-    .then(data => {
-        document.getElementById("normalny").textContent = data.normalny;
-        document.getElementById("ulgowy").textContent = data.ulgowy;
-    });
+
 
 

@@ -23,8 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .then(data => {
   tabela.innerHTML = "";
-
-  data.forEach(rez => {
+  const aktywne = data.filter(rez => rez.status_rezerwacji !== "Anulowana");
+  aktywne.forEach(rez => {
 
     const miejsca = rez.miejsca
       .map(m => `#${m.id_miejsca} (${m.typ_biletu})`)
@@ -41,11 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
       <td>${miejsca}</td>
       <td>${suma} zł</td>
       <td>
-        <button class="usunBtn">Usuń</button>
+        <button class="usunBtn">Anuluj rezerwacje</button>
       </td>
     `;
-
-    // obsługa usuwania
     tr.querySelector(".usunBtn").addEventListener("click", () => {
       usunRezerwacje(rez.id_rezerwacji);
     });

@@ -40,11 +40,17 @@ document.addEventListener("DOMContentLoaded", () => {
       <td>${miejsca}</td>
       <td>${suma} zł</td>
       <td>
+      <button class="potwierdzBtn">Potwierdz rezerwacje</button>
+      </td>
+      <td>
         <button class="usunBtn">Anuluj rezerwacje</button>
       </td>
     `;
     tr.querySelector(".usunBtn").addEventListener("click", () => {
       usunRezerwacje(rez.id_rezerwacji);
+    });
+      tr.querySelector(".potwierdzBtn").addEventListener("click", () => {
+      potwierdzRezerwacje(rez.id_rezerwacji);
     });
 
     tabela.appendChild(tr);
@@ -54,11 +60,24 @@ function usunRezerwacje(id) {
   if (!confirm("Czy na pewno usunąć rezerwację " + id + "?")) return;
 
   fetch(`http://localhost:8000/rezerwacje/${id}/anuluj`, {
-    method: "Delete"
+    method: "PATCH"
   })
   .then(r => {
     if (!r.ok) throw new Error("Błąd usuwania");
     alert("Rezerwacja usunięta");
+    location.reload(); // odśwież tabelę
+  })
+  .catch(e => alert("Błąd: " + e));
+}
+function potwierdzRezerwacje(id) {
+  if (!confirm("Czy na pewno potwierdzic rezerwację " + id + "?")) return;
+
+  fetch(`http://localhost:8000/rezerwacje/${id}/potwierdz`, {
+    method: "PATCH"
+  })
+  .then(r => {
+    if (!r.ok) throw new Error("Błąd płatności");
+    alert("Rezerwacja potwierdzona");
     location.reload(); // odśwież tabelę
   })
   .catch(e => alert("Błąd: " + e));

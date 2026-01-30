@@ -155,7 +155,7 @@ def potwierdz_rezerwacje(
     )
 
 
-@router.delete("/{id_rezerwacji}/anuluj", response_model=schemas.RezerwacjaOut)
+@router.patch("/{id_rezerwacji}/anuluj", response_model=schemas.RezerwacjaOut)
 def anuluj_rezerwacje(
     id_rezerwacji: int,
     db: Session = Depends(get_db),

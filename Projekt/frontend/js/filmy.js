@@ -1,7 +1,3 @@
-const user = getUser();
-if (!user) {
-    window.location.href = "login.html";
-}
 fetch(`${API_BASE}/filmy`)
     .then(res => res.json())
     .then(data => {

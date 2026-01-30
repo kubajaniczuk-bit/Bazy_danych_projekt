@@ -3,7 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Rezerwacja miejsc</title>
+<link rel="stylesheet" href="css/strona_glowna.css">
 </head>
+<header class="navbar">
+  <h1 class="logo">Kino</h1>
+  <nav class="menu">
+    <a href="filmy.html" class="btn">Filmy</a>
+    <a href="repertuar.html" class="btn">Repertuar</a>
+    <a href="rezerwacje_uzytkownika.html" class="btn">Twoje rezerwacje</a>
+    <div id="admin" class="admin-menu" style="display:none;">
+      <a href="sala.html" class="btn">Tworzenie sal</a>
+      <a href="admin_seans.html" class="btn">Dodawanie seansów</a>
+      <a href="raport_sprzedazy.html" class="btn">Raport sprzedaży</a>
+      <a href="filmy_admin.html" class="btn">Lista filmów</a>
+    </div>
+  </nav>
+  <button onclick="logout()" class="logout-btn">Wyloguj</button>
+</header>
 <body>
 <h1>Wybierz miejsca</h1>
 <div id="sala"></div>
@@ -11,5 +27,6 @@
 <div id="panelBiletow"></div>
 <button onclick="zapiszRezerwacje()">Rezerwuj</button>
 <script src="js/rezerwacja.js"></script>
+<script src="js/api.js"></script>
 </body>
 </html>

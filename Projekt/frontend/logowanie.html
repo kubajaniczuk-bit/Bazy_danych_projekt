@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <title>Kino</title>
-</head>
+<meta charset="UTF-8">
+<title>Logowanie</title>
+<link rel="stylesheet" href="css/logowanie.css">
+<header class="navbar">
 <body>
-<h1>Logowanie</h1>
-
-<input id="email" placeholder="Email" required>
-<input id="haslo" type="password" placeholder="Hasło" required>
-
-<button onclick="login()">Zaloguj</button>
-
-<p>
+<div>
+  <h1>Logowanie</h1>
+  <input id="email" placeholder="Email" required>
+  <input id="haslo" type="password" placeholder="Hasło" required>
+  <button onclick="login()">Zaloguj</button>
+  <p>
     Nie masz konta?
     <a href="rejestracja.html">Zarejestruj się</a>
-</p>
+  </p>
+</div>
 
 <script src="js/api.js"></script>
 <script src="js/auth.js"></script>
+</body>

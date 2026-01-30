@@ -3,6 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Twoje rezerwacje</title>
+<link rel="stylesheet" href="css/strona_glowna.css">
+<header class="navbar">
+  <h1 class="logo">Kino</h1>
+  <nav class="menu">
+    <a href="filmy.html" class="btn">Filmy</a>
+    <a href="repertuar.html" class="btn">Repertuar</a>
+    <a href="rezerwacje_uzytkownika.html" class="btn">Twoje rezerwacje</a>
+    <div id="admin" class="admin-menu" style="display:none;">
+      <a href="sala.html" class="btn">Tworzenie sal</a>
+      <a href="admin_seans.html" class="btn">Dodawanie seansów</a>
+      <a href="raport_sprzedazy.html" class="btn">Raport sprzedaży</a>
+      <a href="filmy_admin.html" class="btn">Lista filmów</a>
+    </div>
+  </nav>
+  <button onclick="logout()" class="logout-btn">Wyloguj</button>
+</header>
 <style>
   body { font-family: Arial; background:#f5f5f5; padding:20px; }
   h2 { text-align:center; }
@@ -46,6 +62,7 @@
   </thead>
   <tbody id="tabelaRezerwacji"></tbody>
 </table>
+<script src="js/api.js"></script>
 <script src="js/rezerwacje_uzytkownika.js"></script>
 </body>
 </html>

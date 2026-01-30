@@ -28,13 +28,11 @@ fetch(`${API_BASE}/filmy/`)
             ul.appendChild(li);
         });
     });
-
-
 function edytujFilm(film) {
-    // Sprawdź, czy formularz już istnieje
+    // Sprawdzenie czy formularz już istnieje
     if (document.getElementById(`edit-form-${film.id_filmu}`)) return;
     const li = document.querySelector(`#lista-filmow li[data-id='${film.id_filmu}']`);
-    // Tworzymy formularz
+    // Tworzenie formularza
     const form = document.createElement("form");
     form.id = `edit-form-${film.id_filmu}`;
     form.style.marginTop = "5px";
@@ -55,11 +53,9 @@ function edytujFilm(film) {
         const tytul = form.elements["tytul"].value.trim();
         const gatunek = form.elements["gatunek"].value.trim();
         const czas_trwania = form.elements["czas_trwania"].value.trim();
-
         if (tytul) data.tytul = tytul;
         if (gatunek) data.typ = gatunek;
         if (czas_trwania) data.czas_trwania = Number(czas_trwania);
-
         // Jeśli nic nie zostało wpisane, nie wysyłamy requesta
         if (Object.keys(data).length === 0) {
             alert("Nie wprowadzono żadnych zmian!");
@@ -73,21 +69,20 @@ function edytujFilm(film) {
         .then(res => {
             if (res.ok) {
                 alert("Film zaktualizowany!");
-                location.reload(); // lub można dynamicznie zmienić li bez reload
+                location.reload();
             } else {
                 alert("Błąd przy aktualizacji filmu");
             }
         });
     });
 }
-
 function usunFilm(id_filmu) {
     console.log("Usuwasz film o id:", id_filmu);
     fetch(`${API_BASE}/filmy/${id_filmu}`, { method: "DELETE" })
         .then(res => {
             if (res.ok) {
                 alert("Film usunięty!");
-                location.reload(); // odświeżamy listę
+                location.reload();
             } else {
                 alert("Błąd przy usuwaniu filmu");
             }
@@ -114,7 +109,7 @@ function dodajFilm() {
     })
     .then(() => {
         document.getElementById("admin-msg").textContent = "Film dodany!";
-        location.reload(); // odśwież listę
+        location.reload();
     })
     .catch(err => {
         document.getElementById("admin-msg").textContent = err.message;

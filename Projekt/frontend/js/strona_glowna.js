@@ -5,4 +5,3 @@ if (!user) {
 if (user.typ === 2) {
   document.getElementById("admin").style.display = "block";
 }
-

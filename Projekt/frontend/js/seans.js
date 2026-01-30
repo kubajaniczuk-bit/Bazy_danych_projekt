@@ -3,7 +3,6 @@ function dodajSeans() {
   const id_sali = document.getElementById("salaId").value;
   const data = document.getElementById("data").value;
   const godzina = document.getElementById("godzina").value;
-
   fetch("http://localhost:8000/seanse/", {
     method: "POST",
     headers: {"Content-Type": "application/json"},

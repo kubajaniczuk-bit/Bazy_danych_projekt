@@ -40,7 +40,6 @@ function renderujMiejsca(miejsca) {
 let wybraneMiejsca = [];
 function wybierzMiejsce(btn) {
   const id = parseInt(btn.dataset.id);
-  // czy już wybrane
   const istnieje = wybraneMiejsca.find(m => m.id === id);
   if (istnieje) {
     wybraneMiejsca = wybraneMiejsca.filter(m => m.id !== id);

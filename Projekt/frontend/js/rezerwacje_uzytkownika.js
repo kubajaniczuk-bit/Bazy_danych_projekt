@@ -1,20 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
   const userString = localStorage.getItem("uzytkownik");
   const tabela = document.getElementById("tabelaRezerwacji");
-
   if (!tabela) {
     console.error("Brak elementu tabelaRezerwacji w HTML!");
     return;
   }
-
   if (!userString) {
     alert("Brak zalogowanego użytkownika!");
     return;
   }
-
   const user = JSON.parse(userString);
   const idUzytkownika = user.id;
-
   fetch(`http://localhost:8000/uzytkownicy/${idUzytkownika}/rezerwacje`)
     .then(r => {
       console.log("STATUS:", r.status);
@@ -24,15 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
   tabela.innerHTML = "";
   const aktywne = data.filter(rez => rez.status_rezerwacji !== "Anulowana");
   aktywne.forEach(rez => {
-
     const miejsca = rez.miejsca
       .map(m => `#${m.id_miejsca} (${m.typ_biletu})`)
       .join(", ");
-
     const suma = rez.miejsca.reduce((s, m) => s + m.cena_biletu, 0);
-
     const tr = document.createElement("tr");
-
     tr.innerHTML = `
       <td>${rez.id_rezerwacji}</td>
       <td>${rez.seans.id_seansu}</td>
@@ -58,27 +50,25 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 function usunRezerwacje(id) {
   if (!confirm("Czy na pewno usunąć rezerwację " + id + "?")) return;
-
   fetch(`http://localhost:8000/rezerwacje/${id}/anuluj`, {
     method: "PATCH"
   })
   .then(r => {
     if (!r.ok) throw new Error("Błąd usuwania");
     alert("Rezerwacja usunięta");
-    location.reload(); // odśwież tabelę
+    location.reload();
   })
   .catch(e => alert("Błąd: " + e));
 }
 function potwierdzRezerwacje(id) {
   if (!confirm("Czy na pewno potwierdzic rezerwację " + id + "?")) return;
-
   fetch(`http://localhost:8000/rezerwacje/${id}/potwierdz`, {
     method: "PATCH"
   })
   .then(r => {
     if (!r.ok) throw new Error("Błąd płatności");
     alert("Rezerwacja potwierdzona");
-    location.reload(); // odśwież tabelę
+    location.reload();
   })
   .catch(e => alert("Błąd: " + e));
 }})

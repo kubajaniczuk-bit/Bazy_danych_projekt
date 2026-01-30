@@ -5,7 +5,6 @@
   font-family: Arial, sans-serif;
 }
 
-/* Pasek górny */
 .navbar {
   display: flex;
   align-items: center;
@@ -14,22 +13,16 @@
   padding: 10px 20px;
   color: white;
 }
-
-/* Logo */
 .logo {
   font-size: 20px;
   font-weight: bold;
   color: white;
 }
-
-/* Menu */
 .menu {
   display: flex;
   align-items: center;
   gap: 15px;
 }
-
-/* Linki */
 .btn {
   text-decoration: none;
   color: white;
@@ -39,20 +32,14 @@
   background: transparent;
   border: 1px solid transparent;
 }
-
-/* Hover efekt */
 .btn:hover {
   background: orange;
   color: black;
 }
-
-/* Admin menu inline */
 .admin-menu {
   display: flex;
   gap: 10px;
 }
-
-/* Wyloguj */
 .logout-btn {
   background: black;
   color: white;
@@ -62,7 +49,6 @@
   border-radius: 4px;
   transition: 0.2s;
 }
-
 .logout-btn:hover {
   background: orange;
   color: black;

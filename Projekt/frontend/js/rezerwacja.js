@@ -12,7 +12,6 @@ function renderujMiejsca(miejsca) {
   const sala = document.getElementById("sala");
   sala.innerHTML = "";
   let currentRow = "";
-
   miejsca.forEach(m => {
     if (m.rzad !== currentRow) {
       currentRow = m.rzad;
@@ -22,15 +21,12 @@ function renderujMiejsca(miejsca) {
       sala.appendChild(label);
       sala.appendChild(document.createElement("br"));
     }
-
     const btn = document.createElement("button");
     btn.textContent = m.numer;
     btn.dataset.id = m.id_miejsca;
-
     btn.style.width = "30px";
     btn.style.height = "30px";
     btn.style.margin = "3px";
-
     if (m.status !== "Wolne") {
       btn.style.background = "red";
       btn.disabled = true;
@@ -38,11 +34,9 @@ function renderujMiejsca(miejsca) {
       btn.style.background = "lightgreen";
       btn.onclick = () => wybierzMiejsce(btn);
     }
-
     sala.appendChild(btn);
   });
 }
-// rezerwacja
 let wybraneMiejsca = [];
 function wybierzMiejsce(btn) {
   const id = parseInt(btn.dataset.id);
@@ -60,22 +54,18 @@ function wybierzMiejsce(btn) {
 function renderujPanelBiletow() {
   const panel = document.getElementById("panelBiletow");
   panel.innerHTML = "";
-
   wybraneMiejsca.forEach(m => {
     const div = document.createElement("div");
     const select = document.createElement("select");
-
     select.innerHTML = `
       <option value="normalny">Normalny</option>
       <option value="ulgowy">Ulgowy</option>
     `;
     select.value = m.typ;
-
     select.addEventListener("change", e => {
       m.typ = e.target.value;
       console.log("Zmieniono:", m);
     });
-
     div.innerHTML = `Miejsce ${m.id}: `;
     div.appendChild(select);
     panel.appendChild(div);
@@ -102,7 +92,3 @@ function zapiszRezerwacje() {
   .then(r => r.json())
   .then(d => alert("Rezerwacja zapisana! ID=" + d.id_rezerwacji));
 }
-
-
-
-

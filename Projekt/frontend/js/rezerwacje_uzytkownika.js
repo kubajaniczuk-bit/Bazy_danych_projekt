@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   const userString = localStorage.getItem("uzytkownik");
   const tabela = document.getElementById("tabelaRezerwacji");
 

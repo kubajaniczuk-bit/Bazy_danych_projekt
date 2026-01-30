@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Kino</title>
+    <link rel="stylesheet" href="css/proba.css">
+</head>
+<body>
+<input type="date" id="dataRaportu">
+<button onclick="pobierzRaport()">Pobierz raport</button>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Liczba biletów</th>
+      <th>Przychód</th>
+    </tr>
+  </thead>
+  <tbody id="tabelaRaport"></tbody>
+</table>
+
+<script src="js/raport_sprzedazy.js"></script>
+</body>

@@ -39,9 +39,10 @@ async def auto_cleanup():
         while True:
             from .db import SessionLocal
             from .api.rezerwacje import sprzataj_wygasle_rezerwacje
-
+            from .api.seanse import sprzataj_wygasle_seanse
             db = SessionLocal()
             sprzataj_wygasle_rezerwacje(db)
+            sprzataj_wygasle_seanse(db)
             db.close()
 
             await asyncio.sleep(60)  # co 60 sekund

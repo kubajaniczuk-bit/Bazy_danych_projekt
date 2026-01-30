@@ -2,6 +2,7 @@ from typing import List, Dict
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
+from datetime import datetime
 
 from ..db import get_db
 from .. import models, schemas
@@ -291,3 +292,36 @@ def usun_seans(
     db.commit()
 
     return {"detail": "Seans został usunięty."}
+
+
+@router.post("/sprzataj_wygasle")
+def sprzataj_wygasle_seanse(db: Session = Depends(get_db)):
+    """
+    Usuwa seanse, których data i godzina są wcześniejsze niż aktualny czas.
+    Rezerwacje i miejsca powiązane usuwane są kaskadowo.
+    """
+
+    teraz = datetime.now()
+
+    seanse = db.query(models.Seans).all()
+    usuniete = 0
+
+    for seans in seanse:
+        try:
+            data_seansu = datetime.fromisoformat(
+                f"{seans.data} {seans.godzina}"
+            )
+        except ValueError:
+            # jeśli format daty/godziny jest błędny – pomijamy
+            continue
+
+        if data_seansu < teraz:
+            db.delete(seans)
+            usuniete += 1
+
+    db.commit()
+
+    return {
+        "detail": "Sprzątanie wygasłych seansów zakończone",
+        "usuniete_seanse": usuniete,
+    }

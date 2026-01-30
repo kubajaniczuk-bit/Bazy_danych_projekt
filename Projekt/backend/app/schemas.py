@@ -67,7 +67,7 @@ class RezerwacjaCreate(BaseModel):
     id_uzytkownika: int
     id_seansu: int
     miejsca: List[int]  # lista id_miejsca
-    typ_biletu: Optional[str] = "normalny"
+    typ_biletu: List[str] #lista typow_biletu
 
 
 class RezerwacjaOut(BaseModel):

@@ -96,7 +96,7 @@ function zapiszRezerwacje() {
       id_uzytkownika: idUzytkownika,
       id_seansu: idSeansu,
       miejsca: wybraneMiejsca.map(m => m.id),
-      typ_biletu: wybraneMiejsca[0].typ  
+      typ_biletu: wybraneMiejsca.map(m => m.typ) 
     })
   })
   .then(r => r.json())

@@ -87,13 +87,13 @@ def utworz_rezerwacje(
     db.refresh(nowa_rez)
 
     # --- 5. Dodajemy miejsca rezerwacji + cena biletu ---
-    cena_jednego = CENNIK_BILETOW.get(dane.typ_biletu, 0.0)
 
-    for m in dane.miejsca:
+    for id_miejsca, typ in zip(dane.miejsca, dane.typ_biletu):
+        cena_jednego = CENNIK_BILETOW.get(typ, 0.0)
         rm = models.RezerwacjaMiejsca(
             id_rezerwacji=nowa_rez.id_rezerwacji,
-            id_miejsca=m,
-            typ_biletu=dane.typ_biletu,
+            id_miejsca=id_miejsca,
+            typ_biletu=typ,
             cena_biletu=cena_jednego,
         )
         db.add(rm)
